@@ -2,27 +2,21 @@ import requests
 
 from bs4 import BeautifulSoup
 
-# Define the URL of the webpage you want to scrape
 
 url = 'https://www.audible.com/search?keywords=book&node=18573211011'
 
-# Send an HTTP GET request to the URL
 
 response = requests.get(url)
 
-# Check if the request was successful
 
 if response.status_code == 200:
 
-    # Parse the HTML content of the page
 
     soup = BeautifulSoup(response.text, 'html.parser')
 
-    # Extract data - this example assumes we're extracting all paragraph text
 
     paragraphs = soup.find_all('p')
 
-    # Print the text of each paragraph
 
     for para in paragraphs:
         print(para.get_text())
@@ -35,24 +29,14 @@ import requests
 
 from bs4 import BeautifulSoup
 
-# Define the URL of the webpage you want to scrape
-
 url = 'https://example.com'
 
-# Send an HTTP GET request to the URL
 
 response = requests.get(url)
 
-# Check if the request was successful
 
 if response.status_code == 200:
-
-    # Parse the HTML content of the page
-
     soup = BeautifulSoup(response.text, 'html.parser')
-
-    # Extract data - this example assumes we're extracting all article titles and links
-
     articles = soup.find_all('article')
 
     for article in articles:
@@ -72,12 +56,11 @@ try:
 
     response = requests.get(url)
 
-    response.raise_for_status()  # Check for HTTP errors
+    response.raise_for_status()  
 
     soup = BeautifulSoup(response.text, 'html.parser')
 
-    # Your scraping logic here
-
+   
 except requests.RequestException as e:
 
     print(f'Error during requests to {url}: {e}')
